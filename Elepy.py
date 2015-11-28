@@ -1,37 +1,33 @@
+"""
+Exercise to demonstrate facility with python
+Challenge is to implement an elevator path planning framework
+"""
+
+import sys
 
 
+def readcommands(inputfile) -> object:
+    print(inputfile)
+    with open(inputfile) as f:
+        content = f.readlines()
+    for cmd in content:
+        print(cmd)
+    return content
 
-
-
-
-
-str = input("Enter file name and mode: ");
-print "Received input is : ", str
-
-with open(fname) as f:
-    content = f.readlines()
-
-
-import sys, getopt
 
 def main(argv):
-   inputfile = ''
-   outputfile = ''
-   try:
-      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
-   except getopt.GetoptError:
-      print 'elepy.py <inputfile> <mode A|B>'
-      sys.exit(2)
-   for opt, arg in opts:
-      if opt == '-h':
-         print 'elepy.py <inputfile> <mode A|B>'
-         sys.exit()
-      elif opt in ("-i", "--ifile"):
-         inputfile = arg
-      elif opt in ("-o", "--ofile"):
-         outputfile = arg
-   print 'Input file is "', inputfile
-   print 'Output file is "', outputfile
+    inputfile = ''
+    mode = ''
+    if len(sys.argv) > 2:
+        print(sys.argv[1])
+        inputfile = sys.argv[1]
+        print(sys.argv[2])
+        mode = sys.argv[2]
+        readcommands(inputfile)
+
+#
+
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+    main(sys.argv[1:])
+
